@@ -56,3 +56,22 @@ Use **SSH** or **EC2 Instance Connect**:
 
 ```bash
 ssh -i your-key.pem ec2-user@<EC2-Public-IP>
+
+---
+3️⃣ Verify or Install Java
+
+Check the Java version:
+java -version
+If Java is older than 17, install Amazon Corretto 17:
+
+sudo amazon-linux-extras enable corretto17
+sudo yum install java-17-amazon-corretto -y
+java -version
+---
+4️⃣ Download the JAR from S3
+Make sure your EC2 instance has access to your S3 bucket (via IAM role or credentials):
+aws s3 cp s3://<your-bucket-name>/LibraryManagmentSystem.jar .
+
+---
+5️⃣ Run the JAR
+java -jar LibraryManagmentSystem.jar
